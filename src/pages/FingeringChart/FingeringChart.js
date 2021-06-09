@@ -1,11 +1,11 @@
 import React from 'react';
-import Note from '../../components/Note/Note';
+import Notes from '../../components/Notes/Notes';
 
 function FingeringChart() {
     return (
         <div>
             <h1>This is the fingering chart</h1>
-            <Note />
+            <Notes />
         </div>
     )
 }

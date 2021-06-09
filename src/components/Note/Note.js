@@ -3,7 +3,7 @@ import React from 'react';
 function Note(props) {
     return (
         <div>
-            <img src='notes/b1.png' alt={props.name} />
+            <img src={props.note.images[0]} alt={props.note.name} />
         </div>
     )
 }
