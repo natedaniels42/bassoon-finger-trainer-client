@@ -9,7 +9,6 @@ function App() {
     <div className="App">
       <NavBar />   
       <main>
-        <h1>Bassoon Finger Trainer</h1>
         <Routes />
       </main>  
     </div>
