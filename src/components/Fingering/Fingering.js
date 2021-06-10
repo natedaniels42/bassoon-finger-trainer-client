@@ -2,7 +2,13 @@ import React from 'react';
 
 class Fingering extends React.Component {
     state = {
-        fingering: {}
+        fingering: []
+    }
+
+    eraseKeys = () => {
+        for (let i = 0; i <= 26; i++) {
+            document.getElementById(`key${i}`).style.fill = 'white';
+        }
     }
 
     render() {
@@ -12,7 +18,7 @@ class Fingering extends React.Component {
                     width="193.000000pt" height="261.000000pt" viewBox="0 0 193.000000 261.000000"
                     preserveAspectRatio="xMidYMid meet">
                     <g transform="translate(0.000000,261.000000) scale(0.100000,-0.100000)"
-                        fill="purple" stroke="black">
+                        fill="white" stroke="black">
                     <path class="key" id="key0" d="M518 1580 c-47 -36 -33 -90 28 -110 44 -15 91 -6 121 22 50 47 16 99
                         -70 106 -42 3 -57 0 -79 -18z" />
                     <path class="key" id="key1" d="M1150 2427 c-39 -13 -80 -67 -80 -104 0 -58 64 -123 121 -123 14 0
