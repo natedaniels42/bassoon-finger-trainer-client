@@ -5,7 +5,7 @@ import FingeringModel from '../../models/Fingerings';
 
 class Note extends React.Component {
     state = {
-        fingering: []
+        fingering: {}
     }
     
     handleClick = (event) => {
@@ -17,10 +17,16 @@ class Note extends React.Component {
     
     render() {
         return (
-            <div onClick={this.handleClick}>
-                <img src={this.props.note.images[0]} alt={this.props.note.name} />
-                
-                <Fingering />
+            <div>
+                <div onClick={this.handleClick}>
+                    <img src={this.props.note.images[0]} alt={this.props.note.name} />
+                </div>
+                <div>
+                    {this.state.fingering.keys && (
+                        <Fingering fingering={this.state.fingering} />
+                        )
+                    }
+                </div>
             </div>
         )
     }
