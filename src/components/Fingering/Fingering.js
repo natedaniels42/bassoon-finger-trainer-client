@@ -10,8 +10,9 @@ class Fingering extends React.Component {
         let active = this.props.active ? this.props.active : false;
         this.setState({fingering: this.props.fingering, active: active});
         
-        if (this.state.fingering.keys) {
-            this.state.fingering.keys[0].map(key => {
+        if (this.props.fingering) {
+            console.log('works')
+            this.props.fingering.keys[0].map(key => {
                 document.getElementById(key).style.fill = 'purple';
             }) 
         }

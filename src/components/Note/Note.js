@@ -19,7 +19,9 @@ class Note extends React.Component {
         return (
             <div>
                 <div onClick={this.handleClick}>
-                    <img src={this.props.note.images[0]} alt={this.props.note.name} />
+                    {this.props.note && (
+                        <img src={this.props.note.images[0]} alt={this.props.note.name} />
+                    )}
                 </div>
                 <div>
                     {this.state.fingering.keys && (

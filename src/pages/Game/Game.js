@@ -1,12 +1,14 @@
 import React from 'react';
 import Fingering from '../../components/Fingering/Fingering';
 import BassoonModel from '../../models/Bassoon';
+import Note from '../../components/Note/Note';
 
 class Game extends React.Component {
     state = {
         notes: [],
         fingerings: [],
-        guess: []
+        guess: [],
+        index: 0
     }
 
     componentDidMount() {
@@ -30,12 +32,22 @@ class Game extends React.Component {
         }
         this.setState({guess: newGuess});
     }
+
+    handleSubmit = () => {
+        let current = this.state.fingerings[this.state.index];
+        for (let i = 0; i < current.keys[0].length; i++) {
+            console.log([current.keys[0][i], this.state.guess[i]]);
+        }
+    }
     
     render() {
+        const { notes, index, fingerings } = this.state;
+
         return (
             <div>
-                <Fingering active={false} />
+                <Note note={notes[index]} />
                 <Fingering active={true} handleClick={this.handleClick} />
+                <button onClick={this.handleSubmit}>Submit</button>
             </div>
         )
     }
