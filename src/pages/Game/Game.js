@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Fingering from '../../components/Fingering/Fingering';
 import BassoonModel from '../../models/Bassoon';
 import Note from '../../components/Note/Note';
@@ -14,7 +15,9 @@ class Game extends React.Component {
     }
 
     componentDidMount() {
-        BassoonModel.findAnswers(0, 35)
+        let low = this.props.location.state.low;
+        let high = this.props.location.state.high;
+        BassoonModel.findAnswers(low, high)
             .then((result) => {
                 this.setState({notes: result.foundNotes, fingerings: result.foundFingerings})
             })
@@ -73,13 +76,6 @@ class Game extends React.Component {
         document.getElementById('next').style.visibility = 'hidden';
         document.getElementById('submit').style.visibility = 'visible';
     }
-
-    handlePlayAgain = () => {
-        this.setState({score: 0, index: 0, guess: [], message: ''});
-        this.eraseKeys();
-        document.getElementById('play-again').style.visibility = 'hidden';
-        document.getElementById('submit').style.visibility = 'visible';
-    }
     
     render() {
         const { notes, index, fingerings, score, message } = this.state;
@@ -93,7 +89,9 @@ class Game extends React.Component {
                 <Fingering active={true} handleClick={this.handleClick} />
                 <button id="submit" onClick={this.handleSubmit}>Submit</button>
                 <button id="next" onClick={this.handleNext}>Next</button>
-                <button id="play-again" onClick={this.handlePlayAgain}>Play Again?</button>
+                <Link to="/levels">
+                    <button id="play-again">Play Again?</button>
+                </Link>
             </div>
         )
     }

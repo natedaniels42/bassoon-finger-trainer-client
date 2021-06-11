@@ -5,29 +5,30 @@ import FingeringModel from '../../models/Fingerings';
 
 class Note extends React.Component {
     state = {
-        fingering: {}
+        fingering: {},
+        visible: false
     }
     
-    handleClick = (event) => {
-        FingeringModel.getByName(event.target.alt)
+    componentDidMount() {
+        const visible = this.props.visible ? this.props.visible : false; 
+        /*FingeringModel.getByName(this.props.note.name)
             .then((result) => {
-                this.setState({fingering: result})
-            })
+                this.setState({fingering: result, visible: visible})
+            })*/
     }
     
     render() {
         return (
             <div>
-                <div onClick={this.handleClick}>
+                <div>
                     {this.props.note && (
                         <img src={this.props.note.images[0]} alt={this.props.note.name} />
                     )}
                 </div>
                 <div>
-                    {this.state.fingering.keys && (
+                    {this.state.visible && (
                         <Fingering fingering={this.state.fingering} />
-                        )
-                    }
+                    )}
                 </div>
             </div>
         )
