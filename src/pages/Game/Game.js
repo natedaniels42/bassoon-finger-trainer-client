@@ -11,7 +11,8 @@ class Game extends React.Component {
         guess: [],
         index: 0,
         score: 0,
-        message: ''
+        message: '',
+        active: true
     }
 
     componentDidMount() {
@@ -32,18 +33,20 @@ class Game extends React.Component {
     }
 
     handleClick = (event) => {
-        let newGuess;
-        let { guess } = this.state;
-        let key = event.target;
-        if (!guess.includes(key.id)) {
-            key.style.fill = 'purple';
-            newGuess = guess.concat(key.id);
-            newGuess.sort(); 
-        } else {
-            key.style.fill = 'white';
-            newGuess = guess.filter(guessKey => guessKey !== key);
+        if (this.state.active) {
+            let newGuess;
+            let { guess } = this.state;
+            let key = event.target;
+            if (!guess.includes(key.id)) {
+                key.style.fill = 'purple';
+                newGuess = guess.concat(key.id);
+                newGuess.sort(); 
+            } else {
+                key.style.fill = 'white';
+                newGuess = guess.filter(guessKey => guessKey !== key.id);
+            }
+            this.setState({guess: newGuess});
         }
-        this.setState({guess: newGuess});
     }
 
     handleSubmit = () => {
@@ -67,18 +70,19 @@ class Game extends React.Component {
         } else {
             document.getElementById('play-again').style.visibility = 'visible';
         }
+        this.setState({active: false});
     }
 
     handleNext = () => {
         let newIndex = this.state.index + 1;
-        this.setState({index: newIndex, message: '', guess: []});
+        this.setState({index: newIndex, message: '', guess: [], active: true});
         this.eraseKeys();
         document.getElementById('next').style.visibility = 'hidden';
         document.getElementById('submit').style.visibility = 'visible';
     }
     
     render() {
-        const { notes, index, fingerings, score, message } = this.state;
+        const { notes, index, fingerings, score, message, active } = this.state;
 
         return (
             <div>
@@ -86,7 +90,7 @@ class Game extends React.Component {
                 <h2>Score: <span>{score}</span></h2>
                 <h3>{message}</h3>
                 <Note note={notes[notes.findIndex(note => note.name === fingerings[index].name)]} />
-                <Fingering active={true} handleClick={this.handleClick} />
+                <Fingering handleClick={this.handleClick} />
                 <button id="submit" onClick={this.handleSubmit}>Submit</button>
                 <button id="next" onClick={this.handleNext}>Next</button>
                 <Link to="/levels">
