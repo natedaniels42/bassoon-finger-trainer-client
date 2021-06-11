@@ -1,10 +1,21 @@
 import React from 'react';
 import Fingering from '../../components/Fingering/Fingering';
+import FingeringModel from '../../models/Fingerings';
 
 class Game extends React.Component {
     state = {
+        notes: [],
+        fingerings: [],
         guess: []
     }
+
+    componentDidMount() {
+        FingeringModel.getRandom()
+            .then(result => {
+                this.setState({fingerings: result})
+            })
+    }
+
     handleClick = (event) => {
         let newGuess;
         let { guess } = this.state;
@@ -23,6 +34,7 @@ class Game extends React.Component {
     render() {
         return (
             <div>
+                <Fingering active={false} />
                 <Fingering active={true} handleClick={this.handleClick} />
             </div>
         )

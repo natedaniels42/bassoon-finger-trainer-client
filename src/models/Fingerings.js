@@ -5,6 +5,11 @@ class FingeringModel {
         return fetch(`${url}/name/${name}`)
             .then((response) => response.json())
     }
+
+    static getRandom = () => {
+        return fetch(`${url}/random`)
+            .then((response) => response.json())
+    }
 }
 
 export default FingeringModel;
