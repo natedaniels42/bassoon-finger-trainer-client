@@ -1,6 +1,6 @@
 import React from 'react';
 import Fingering from '../../components/Fingering/Fingering';
-import FingeringModel from '../../models/Fingerings';
+import BassoonModel from '../../models/Bassoon';
 
 class Game extends React.Component {
     state = {
@@ -10,9 +10,9 @@ class Game extends React.Component {
     }
 
     componentDidMount() {
-        FingeringModel.getRandom()
-            .then(result => {
-                this.setState({fingerings: result})
+        BassoonModel.findAnswers(5, 25)
+            .then((result) => {
+                this.setState({notes: result.foundNotes, fingerings: result.foundFingerings})
             })
     }
 
