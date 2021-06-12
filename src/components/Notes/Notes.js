@@ -19,7 +19,7 @@ class Notes extends React.Component {
         return (
             <div>
                 {this.state.notes.map((note) => {
-                    return <Note note={note} key={note.name} />
+                    return <Note note={note} key={note.name} visible={true} />
                 })}
             </div>
         )
