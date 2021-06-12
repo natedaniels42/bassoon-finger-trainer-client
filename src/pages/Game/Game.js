@@ -69,24 +69,36 @@ class Game extends React.Component {
     handleSubmit = () => {
         let current = this.state.fingerings[this.state.index];
         let correct = true;
-        for (let i = 0; i < current.keys[0].length; i++) {
-            if (current.keys[0][i] !== this.state.guess[i]) {
-                correct = false;
-                break;
-            }
-        }
+        let result = []
+    
+        current.keys.forEach(fingering => {
+            correct = true;
+            fingering.forEach((key, i) => {
+                if (key !== this.state.guess[i]) {
+                    correct = false;
+                    return;
+                }
+            })
+            result.push(correct);
+        })
+    
+        correct = result.includes(true); 
+    
         if (correct) {
             let newScore = this.state.score + 1;
             this.setState({score: newScore, message: 'correct'});
         } else {
             this.setState({message: 'incorrect'});
         }
+    
         document.getElementById('submit').style.visibility = 'hidden';
+    
         if (this.state.index < 9) {
             document.getElementById('next').style.visibility = 'visible';
         } else {
             document.getElementById('play-again').style.visibility = 'visible';
         }
+    
         this.setState({active: false});
     }
 
