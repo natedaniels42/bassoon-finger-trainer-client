@@ -1,4 +1,5 @@
 import React from 'react';
+import './Fingering.css';
 
 class Fingering extends React.Component {
     state = {
@@ -33,8 +34,8 @@ class Fingering extends React.Component {
                         fill="white" stroke="black">
                     <path className="key" id="key0" onClick={this.props.handleClick} d="M518 1580 c-47 -36 -33 -90 28 -110 44 -15 91 -6 121 22 50 47 16 99
                         -70 106 -42 3 -57 0 -79 -18z" />
-                    <path className="key" id="key1" onClick={this.props.handleClick} d="M1150 2427 c-39 -13 -80 -67 -80 -104 0 -58 64 -123 121 -123 14 0
-                        41 10 60 23 113 76 29 247 -101 204z" />
+                    <path className="key" id="key1" onClick={this.props.handleClick} d="M1070 2320 A 120,120 0 1,0 1310 2320 L 1070, 2320"/>
+                    <path className="key" id="key27" onClick={this.props.handleClick} d="M1070 2320 A 120,120 0 0,1 1310 2320 L 1070, 2320"/>
                     <path className="key" id="key2" onClick={this.props.handleClick} d="M1150 2107 c-39 -13 -80 -67 -80 -104 0 -58 64 -123 121 -123 14 0
                         41 10 60 23 113 76 29 247 -101 204z" />
                     <path className="key" id="key3" onClick={this.props.handleClick} d="M1129 1785 c-27 -15 -59 -69 -59 -100 0 -32 33 -86 61 -100 94 -49
