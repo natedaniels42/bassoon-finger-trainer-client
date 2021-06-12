@@ -35,8 +35,24 @@ class Game extends React.Component {
     handleClick = (event) => {
         if (this.state.active) {
             let newGuess;
+            let key27;
+            let key1;
             let { guess } = this.state;
             let key = event.target;
+            if (key.id === 'key1') {
+                key27 = 'key27';
+                if (!guess.includes(key.id)) {
+                    document.getElementById('key27').style.fill = 'purple';
+                } else {
+                    document.getElementById('key27').style.fill = 'white';
+                }
+            } 
+            if (key.id === 'key27') {
+                key1 = 'key1';
+                if (document.getElementById(key1).style.fill === 'purple') {
+                    document.getElementById(key1).style.fill = 'white';
+                }
+            }
             if (!guess.includes(key.id)) {
                 key.style.fill = 'purple';
                 newGuess = guess.concat(key.id);
@@ -45,6 +61,7 @@ class Game extends React.Component {
                 key.style.fill = 'white';
                 newGuess = guess.filter(guessKey => guessKey !== key.id);
             }
+            newGuess = newGuess.filter(guessKey => guessKey !== key27 && guessKey !== key1);
             this.setState({guess: newGuess});
         }
     }
