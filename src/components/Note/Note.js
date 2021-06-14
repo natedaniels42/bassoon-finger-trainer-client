@@ -6,15 +6,13 @@ import FingeringModel from '../../models/Fingerings';
 class Note extends React.Component {
     state = {
         fingering: {},
-        visible: false
     }
     
     componentDidMount() {
-        const visible = this.props.visible ? this.props.visible : false; 
-        /*FingeringModel.getByName(this.props.note.name)
+        FingeringModel.getByName(this.props.note.name)
             .then((result) => {
-                this.setState({fingering: result, visible: visible})
-            })*/
+                this.setState({fingering: result})
+            })
     }
     
     render() {
@@ -26,8 +24,8 @@ class Note extends React.Component {
                     )}
                 </div>
                 <div>
-                    {this.state.visible && (
-                        <Fingering fingering={this.state.fingering} />
+                    {this.props.visible && (
+                        <Fingering fingering={this.state.fingering} key={this.state.fingering.name} />
                     )}
                 </div>
             </div>
