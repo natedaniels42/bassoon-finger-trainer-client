@@ -11,10 +11,12 @@ class Fingering extends React.Component {
         this.setState({fingering: this.props.fingering, active: active});
         
         if (this.props.fingering) {
-            console.log('works')
             this.props.fingering.keys[0].forEach(key => {
                 document.getElementById(key).style.fill = 'purple';
-            }) 
+            })
+            if (this.props.fingering.keys[0].includes('key1')) {
+                document.getElementById('key27').style.fill = 'purple';
+            } 
         }
     }
     
@@ -26,7 +28,7 @@ class Fingering extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="fingering-container">
                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="193.000000pt" height="261.000000pt" viewBox="0 0 193.000000 261.000000"
                     preserveAspectRatio="xMidYMid meet">
