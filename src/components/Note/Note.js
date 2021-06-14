@@ -6,7 +6,7 @@ import FingeringModel from '../../models/Fingerings';
 class Note extends React.Component {
     state = {
         fingering: {},
-        visible: false
+        visible: false,
     }
     
     componentDidMount() {

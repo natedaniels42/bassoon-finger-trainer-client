@@ -12,7 +12,7 @@ class Fingering extends React.Component {
         
         if (this.props.fingering) {
             console.log('works')
-            this.props.fingering.keys[0].map(key => {
+            this.props.fingering.keys[0].forEach(key => {
                 document.getElementById(key).style.fill = 'purple';
             }) 
         }
