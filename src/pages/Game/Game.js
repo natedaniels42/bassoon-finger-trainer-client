@@ -20,7 +20,6 @@ class Game extends React.Component {
         let high = this.props.location.state.high;
         BassoonModel.findAnswers(low, high)
             .then((result) => {
-                console.log(result)
                 this.setState({notes: result.foundNotes, fingerings: result.foundFingerings})
             })
         document.getElementById('next').style.visibility = 'hidden';
