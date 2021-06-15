@@ -125,7 +125,7 @@ class Fingering extends React.Component {
                     </g>
                 </svg>
                 <div className="button-container">
-                    {this.props.fingering.keys.length && (
+                    {this.props.fingering.keys.length > 1 && (
                         this.props.fingering.keys.map((key, i) => (
                             <Button key={i} id={i} handleClick={this.handleClick} />
                         ))
