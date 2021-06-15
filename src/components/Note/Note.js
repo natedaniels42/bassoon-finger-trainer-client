@@ -1,7 +1,7 @@
 import React from 'react';
 import Fingering from '../Fingering/Fingering';
 import FingeringModel from '../../models/Fingerings';
-
+import './Note.css';
 
 class Note extends React.Component {
     state = {
@@ -17,8 +17,8 @@ class Note extends React.Component {
     
     render() {
         return (
-            <div>
-                <div>
+            <div className="note-container">
+                <div onClick={this.props.handleClick} >
                     {this.props.note && (
                         <img src={this.props.note.images[0]} alt={this.props.note.name} />
                     )}
