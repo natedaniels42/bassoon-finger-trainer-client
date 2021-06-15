@@ -1,9 +1,11 @@
 import React from 'react';
 import './Fingering.css';
+import Button from '../Button/Button';
 
 class Fingering extends React.Component {
     state = {
         fingering: {},
+        index: 0
     }
 
     componentDidMount() {
@@ -11,10 +13,10 @@ class Fingering extends React.Component {
         this.setState({fingering: this.props.fingering, active: active});
         
         if (this.props.fingering) {
-            this.props.fingering.keys[0].forEach(key => {
+            this.props.fingering.keys[this.state.index].forEach(key => {
                 document.getElementById(key).style.fill = 'purple';
             })
-            if (this.props.fingering.keys[0].includes('key1')) {
+            if (this.props.fingering.keys[this.state.index].includes('key1')) {
                 document.getElementById('key27').style.fill = 'purple';
             } 
         }
@@ -100,6 +102,10 @@ class Fingering extends React.Component {
                         462 2 463 228 3 227 2 -227 3 -228 2 -3 493 -2 492 -3 -492z"/>
                     </g>
                 </svg>
+                <div>
+                    <Button />
+                    <Button />
+                </div>
             </div>
         )
     }
