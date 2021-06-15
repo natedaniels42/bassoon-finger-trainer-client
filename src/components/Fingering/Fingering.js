@@ -21,11 +21,33 @@ class Fingering extends React.Component {
             } 
         }
     }
+
+    componentDidUpdate(prevProps) {
+        this.eraseKeys();
+        this.populateKeys();
+    }
     
+    populateKeys = () => {
+        if (this.props.fingering) {
+            this.props.fingering.keys[this.state.index].forEach(key => {
+                document.getElementById(key).style.fill = 'purple';
+            })
+            if (this.props.fingering.keys[this.state.index].includes('key1')) {
+                document.getElementById('key27').style.fill = 'purple';
+            } 
+        }
+    }
+
     eraseKeys = () => {
         for (let i = 0; i <= 26; i++) {
             document.getElementById(`key${i}`).style.fill = 'white';
         }
+    }
+
+    handleClick = (event) => {
+        this.setState({index: Number(event.target.id)});
+        this.eraseKeys();
+        this.populateKeys();
     }
 
     render() {
@@ -102,9 +124,12 @@ class Fingering extends React.Component {
                         462 2 463 228 3 227 2 -227 3 -228 2 -3 493 -2 492 -3 -492z"/>
                     </g>
                 </svg>
-                <div>
-                    <Button />
-                    <Button />
+                <div className="button-container">
+                    {this.props.fingering.keys.length && (
+                        this.props.fingering.keys.map((key, i) => (
+                            <Button key={i} id={i} handleClick={this.handleClick} />
+                        ))
+                    )}
                 </div>
             </div>
         )
