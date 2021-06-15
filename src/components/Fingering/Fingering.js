@@ -39,7 +39,7 @@ class Fingering extends React.Component {
     }
 
     eraseKeys = () => {
-        for (let i = 0; i <= 26; i++) {
+        for (let i = 0; i <= 27; i++) {
             document.getElementById(`key${i}`).style.fill = 'white';
         }
     }
