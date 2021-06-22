@@ -1,4 +1,4 @@
-const url = `${process.env.REACT_APP_URL}/bassoon`;
+const url = 'https://bassoon-finger-trainer-api.herokuapp.com/bassoon';
 
 class BassoonModel {
     static findAnswers = (bottom, top) => {

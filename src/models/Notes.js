@@ -1,4 +1,4 @@
-const url = `${process.env.REACT_APP_URL}/notes`;
+const url = 'https://bassoon-finger-trainer-api.herokuapp.com/notes';
 
 class NoteModel {
     static getAllNotes = () => {

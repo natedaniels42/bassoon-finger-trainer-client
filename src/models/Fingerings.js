@@ -1,4 +1,4 @@
-const url = `${process.env.REACT_APP_URL}/fingerings`;
+const url = 'https://bassoon-finger-trainer-api.herokuapp.com/fingerings';
 
 class FingeringModel {
     static getByName = (name) => {
