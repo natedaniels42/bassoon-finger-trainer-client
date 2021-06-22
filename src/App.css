@@ -1,3 +1,21 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 button {
-  background-color: aliceblue;
+  background-color: deepskyblue;
+  box-shadow: 5px 5px 5px lightgray;
+  margin: 1%;
+  border-radius: 5px;
+}
+
+button:active {
+  box-shadow: inset 5px 5px 5px lightgray;
+}
+
+p {
+  letter-spacing: .1em;
+  word-spacing: .2em;
 }
