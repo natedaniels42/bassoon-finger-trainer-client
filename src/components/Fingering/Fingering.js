@@ -5,12 +5,14 @@ import Button from '../Button/Button';
 class Fingering extends React.Component {
     state = {
         fingering: {},
-        index: 0
+        index: 0,
+        length: 0
     }
 
     componentDidMount() {
         let active = this.props.active ? this.props.active : false;
-        this.setState({fingering: this.props.fingering, active: active});
+        let length = this.props.fingering ? this.props.fingering.keys.length : 0;
+        this.setState({fingering: this.props.fingering, active: active, length: length});
         
         if (this.props.fingering) {
             this.props.fingering.keys[this.state.index].forEach(key => {
@@ -23,8 +25,10 @@ class Fingering extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        this.eraseKeys();
-        this.populateKeys();
+        if (!this.state.active) {
+            this.eraseKeys();
+            this.populateKeys();
+        }
     }
     
     populateKeys = () => {
@@ -39,15 +43,19 @@ class Fingering extends React.Component {
     }
 
     eraseKeys = () => {
-        for (let i = 0; i <= 26; i++) {
+        for (let i = 0; i <= 27; i++) {
             document.getElementById(`key${i}`).style.fill = 'white';
         }
     }
 
-    handleClick = (event) => {
+    handleButtonClick = (event) => {
         this.setState({index: Number(event.target.id)});
         this.eraseKeys();
         this.populateKeys();
+    }
+
+    checkFingerings = () => {
+        return this.state.fingering && !this.state.active;
     }
 
     render() {
@@ -124,13 +132,14 @@ class Fingering extends React.Component {
                         462 2 463 228 3 227 2 -227 3 -228 2 -3 493 -2 492 -3 -492z"/>
                     </g>
                 </svg>
-                <div className="button-container">
-                    {this.props.fingering.keys.length && (
-                        this.props.fingering.keys.map((key, i) => (
-                            <Button key={i} id={i} handleClick={this.handleClick} />
-                        ))
-                    )}
-                </div>
+                {this.state.length > 0 && (
+                    <div className="button-container">
+                        {this.state.fingering.keys.map((key, i) => (
+                            <Button key={i} id={i} handleButtonClick={this.handleButtonClick} />
+                            ))
+                        }
+                    </div>
+                )}
             </div>
         )
     }

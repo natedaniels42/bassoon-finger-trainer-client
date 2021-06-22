@@ -21,12 +21,12 @@ class Levels extends React.Component {
                 <h3>Pick a Difficulty Level:</h3>
                     <button id="7-19" onClick={this.handleClick}>Beginner</button>
                     <button id="0-31" onClick={this.handleClick}>Intermediate</button>
-                    <button id="0-42" onClick={this.handleClick}>Advanced</button><hr/>
+                    <button id="0-43" onClick={this.handleClick}>Advanced</button><hr/>
                 <h3>Or Pick a Range:</h3>
                     <button id="0-10" onClick={this.handleClick}>Low</button>
                     <button id="7-26" onClick={this.handleClick}>Mid</button>
                     <button id="26-38" onClick={this.handleClick}>High</button>
-                    <button id="31-42" onClick={this.handleClick}>Extreme</button><hr/>
+                    <button id="31-43" onClick={this.handleClick}>Extreme</button><hr/>
                 <Link to={{pathname: "/game", state: {
                     low: this.state.low, high: this.state.high
                     } 

@@ -118,8 +118,10 @@ class Game extends React.Component {
                 <h2>Question: <span>{index + 1}</span></h2>
                 <h2>Score: <span>{score}</span></h2>
                 <h3>{message}</h3>
-                <Note note={notes[notes.findIndex(note => note.name === fingerings[index].name)]} />
-                <Fingering handleClick={this.handleClick} />
+                {this.state.notes && (
+                    <Note note={notes[notes.findIndex(note => note.name === fingerings[index].name)]} />
+                )}
+                <Fingering list={false} active={true} handleClick={this.handleClick} />
                 <button id="submit" onClick={this.handleSubmit}>Submit</button>
                 <button id="next" onClick={this.handleNext}>Next</button>
                 <Link to="/levels">
