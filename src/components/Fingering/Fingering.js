@@ -52,6 +52,10 @@ class Fingering extends React.Component {
         this.populateKeys();
     }
 
+    checkFingerings = () => {
+        return this.state.fingering && this.state.fingering.keys.length > 1;
+    }
+
     render() {
         return (
             <div className="fingering-container">
@@ -127,7 +131,7 @@ class Fingering extends React.Component {
                     </g>
                 </svg>
                 <div className="button-container">
-                    {this.props.list && this.props.fingering.keys.length > 1 && (
+                    {this.checkFingerings && (
                         this.props.fingering.keys.map((key, i) => (
                             <Button key={i} id={i} handleButtonClick={this.handleButtonClick} />
                         ))
