@@ -1,4 +1,4 @@
-const url = 'http://localhost:4000/api/v1/notes';
+const url = `${process.env.REACT_APP_URL}/notes`;
 
 class NoteModel {
     static getAllNotes = () => {

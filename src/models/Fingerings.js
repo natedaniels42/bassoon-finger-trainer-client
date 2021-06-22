@@ -1,4 +1,4 @@
-const url = 'http://localhost:4000/api/v1/fingerings';
+const url = `${process.env.REACT_APP_URL}/fingerings`;
 
 class FingeringModel {
     static getByName = (name) => {

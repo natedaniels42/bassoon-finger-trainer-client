@@ -1,4 +1,4 @@
-const url = 'http://localhost:4000/api/v1/bassoon';
+const url = `${process.env.REACT_APP_URL}/bassoon`;
 
 class BassoonModel {
     static findAnswers = (bottom, top) => {
