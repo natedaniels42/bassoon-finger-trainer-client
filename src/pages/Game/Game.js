@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Fingering from '../../components/Fingering/Fingering';
 import BassoonModel from '../../models/Bassoon';
 import Note from '../../components/Note/Note';
+import '../../App.css';
 
 class Game extends React.Component {
     state = {
@@ -114,7 +115,7 @@ class Game extends React.Component {
         const { notes, index, fingerings, score, message, active } = this.state;
 
         return (
-            <div>
+            <div className="game-container">
                 <h2>Question: <span>{index + 1}</span></h2>
                 <h2>Score: <span>{score}</span></h2>
                 <h3>{message}</h3>

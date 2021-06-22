@@ -7,15 +7,40 @@
 button {
   background-color: deepskyblue;
   box-shadow: 5px 5px 5px lightgray;
+  width: 10%;
+  height: 10%;
   margin: 1%;
   border-radius: 5px;
+  font-size: 100%;
 }
 
 button:active {
-  box-shadow: inset 5px 5px 5px lightgray;
+  box-shadow: inset 5px 5px 10px darkgray;
 }
 
 p {
   letter-spacing: .1em;
   word-spacing: .2em;
+}
+
+.fingering-chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game-container {
+  height: 100%;
+}
+
+.fingering-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.note-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
