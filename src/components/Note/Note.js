@@ -9,16 +9,18 @@ class Note extends React.Component {
     }
     
     componentDidMount() {
-        FingeringModel.getByName(this.props.note.name)
-            .then((result) => {
-                this.setState({fingering: result})
-            })
+        if (this.props.note) {
+            FingeringModel.getByName(this.props.note.name)
+                .then((result) => {
+                    this.setState({fingering: result})
+                })
+        }
     }
     
     render() {
         return (
             <div className="note-container">
-                <div onClick={this.props.handleClick} >
+                <div onClick={this.props.handleClick ? this.props.handleClick : null} >
                     {this.props.note && (
                         <img src={this.props.note.images[0]} alt={this.props.note.name} />
                     )}

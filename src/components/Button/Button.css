@@ -2,7 +2,12 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: red;
+    background-color: grey;
+}
+
+.button:hover {
+    background-color: lightblue;
+    transform: scale(1.5);
 }
 
 .button-inner {
