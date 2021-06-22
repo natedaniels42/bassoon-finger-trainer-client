@@ -14,6 +14,12 @@ button {
   font-size: 100%;
 }
 
+@media screen and (max-width: 800px) {
+  button {
+    width: 20%;
+  }
+}
+
 button:active {
   box-shadow: inset 5px 5px 10px darkgray;
 }
