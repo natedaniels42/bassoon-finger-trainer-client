@@ -71,6 +71,9 @@ class App extends React.Component {
 
     current.keys.forEach(fingering => {
         correct = true;
+        if (fingering.length !== this.state.guess.length) {
+          correct = false;
+        }
         fingering.forEach((key, i) => {
             if (key !== this.state.guess[i]) {
                 correct = false;
@@ -90,12 +93,6 @@ class App extends React.Component {
     }
 
     document.getElementById('submit').style.visibility = 'hidden';
-
-    if (this.state.index < 9) {
-        document.getElementById('next').style.visibility = 'visible';
-    } else {
-        document.getElementById('play-again').style.visibility = 'visible';
-    }
 
     this.setState({active: false});
   }
@@ -130,15 +127,51 @@ class App extends React.Component {
     const numbers = event.target.id.split('-').map(Number);
     this.setState({low: numbers[0], high: numbers[1]});
     event.target.style.border = '2px solid blue';
-}
+  }
 
+  handleNext = () => {
+    let newIndex = this.state.index + 1;
+    this.setState({index: newIndex, message: '', guess: [], active: true});
+    document.getElementById('next').style.visibility = 'hidden';
+  }
+
+  eraseKeys = () => {
+    for (let i = 0; i <= 27; i++) {
+        document.getElementById(`key${i}`).style.fill = 'white';
+    }
+  }
+
+  handlePlayAgain = () => {
+    this.setState({
+      notes: [],
+      fingerings: [],
+      guess: [],
+      index: 0,
+      score: 0,
+      message: '',
+      active: true,
+      low: null,
+      high: null
+    })
+  }
 
   render() {
     return (
       <div className="App">
         <NavBar />   
         <main>
-          <Routes index={this.state.index} notes={this.state.notes} handleClick={this.handleClick} handleSubmit={this.handleSubmit} findNotes={this.findNotes} handleLevel={this.handleLevel} />
+          <Routes 
+            score={this.state.score} 
+            index={this.state.index} 
+            message={this.state.message}
+            notes={this.state.notes} 
+            fingerings={this.state.fingerings}
+            handleClick={this.handleClick} 
+            handleSubmit={this.handleSubmit} 
+            findNotes={this.findNotes} 
+            handleLevel={this.handleLevel}
+            handleNext={this.handleNext} 
+            handlePlayAgain={this.handlePlayAgain}/>
         </main>  
       </div>
     );
