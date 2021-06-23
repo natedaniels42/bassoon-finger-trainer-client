@@ -1,6 +1,11 @@
 const url = 'https://bassoon-finger-trainer-api.herokuapp.com/api/v1/fingerings';
 
 class FingeringModel {
+    static getAllFingerings = () => {
+        return fetch(url)
+            .then((response) => response.json())
+    }
+    
     static getByName = (name) => {
         return fetch(`${url}/name/${name}`)
             .then((response) => response.json())

@@ -6,7 +6,7 @@ class Fingering extends React.Component {
     state = {
         fingering: {},
         index: 0,
-        length: 0
+        length: 0,
     }
 
     componentDidMount() {
@@ -16,10 +16,10 @@ class Fingering extends React.Component {
         
         if (this.props.fingering) {
             this.props.fingering.keys[this.state.index].forEach(key => {
-                document.getElementById(key).style.fill = 'purple';
+                document.getElementById(key).style.fill = this.props.color;
             })
             if (this.props.fingering.keys[this.state.index].includes('key1')) {
-                document.getElementById('key27').style.fill = 'purple';
+                document.getElementById('key27').style.fill = this.props.color;
             } 
         }
     }
@@ -34,10 +34,10 @@ class Fingering extends React.Component {
     populateKeys = () => {
         if (this.props.fingering) {
             this.props.fingering.keys[this.state.index].forEach(key => {
-                document.getElementById(key).style.fill = 'purple';
+                document.getElementById(key).style.fill = this.props.color;
             })
             if (this.props.fingering.keys[this.state.index].includes('key1')) {
-                document.getElementById('key27').style.fill = 'purple';
+                document.getElementById('key27').style.fill = this.props.color;
             } 
         }
     }
