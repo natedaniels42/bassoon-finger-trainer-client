@@ -1,6 +1,11 @@
 const url = 'http://localhost:4000/api/v1/fingerings';
 
 class FingeringModel {
+    static getAllFingerings = () => {
+        return fetch(url)
+            .then((response) => response.json())
+    }
+    
     static getByName = (name) => {
         return fetch(`${url}/name/${name}`)
             .then((response) => response.json())

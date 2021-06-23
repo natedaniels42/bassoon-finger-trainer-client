@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Fingering from '../../components/Fingering/Fingering';
 import BassoonModel from '../../models/Bassoon';
 import Note from '../../components/Note/Note';
@@ -13,16 +13,17 @@ class Game extends React.Component {
         index: 0,
         score: 0,
         message: '',
-        active: true
+        active: true,
+        low: null,
+        high: null
     }
 
     componentDidMount() {
-        let low = this.props.location.state.low;
-        let high = this.props.location.state.high;
-        BassoonModel.findAnswers(low, high)
+        //this.props.findNotes();
+        /*BassoonModel.findAnswers(low, high)
             .then((result) => {
                 this.setState({notes: result.foundNotes, fingerings: result.foundFingerings})
-            })
+            })*/
         document.getElementById('next').style.visibility = 'hidden';
         document.getElementById('play-again').style.visibility = 'hidden';
     }
@@ -32,7 +33,7 @@ class Game extends React.Component {
             document.getElementById(`key${i}`).style.fill = 'white';
         }
     }
-
+/*
     handleClick = (event) => {
         if (this.state.active) {
             let newGuess;
@@ -102,7 +103,7 @@ class Game extends React.Component {
     
         this.setState({active: false});
     }
-
+*/
     handleNext = () => {
         let newIndex = this.state.index + 1;
         this.setState({index: newIndex, message: '', guess: [], active: true});
@@ -122,8 +123,12 @@ class Game extends React.Component {
                 {this.state.notes && (
                     <Note note={notes[notes.findIndex(note => note.name === fingerings[index].name)]} />
                 )}
-                <Fingering list={false} active={true} handleClick={this.handleClick} />
-                <button id="submit" onClick={this.handleSubmit}>Submit</button>
+                <Fingering list={false} active={true} handleClick={this.props.handleClick} />
+                <Link to={{
+                    pathname: "/next",
+                    state: { index: index, score: score, message: message}}} >
+                    <button id="submit" onClick={this.props.handleSubmit}>Submit</button>
+                </Link>
                 <button id="next" onClick={this.handleNext}>Next</button>
                 <Link to="/levels">
                     <button id="play-again">Play Again?</button>
@@ -133,4 +138,4 @@ class Game extends React.Component {
     }
 }
 
-export default Game;
+export default withRouter(Game);
