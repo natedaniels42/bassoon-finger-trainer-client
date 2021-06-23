@@ -6,11 +6,11 @@ import Game from '../pages/Game/Game';
 import Levels from '../components/Levels/Levels';
 import Next from '../components/Next/Next';
 
-export default ({ handleClick, handleSubmit, findNotes, handleLevel, location }) => (
+export default ({ handleClick, handleSubmit, findNotes, handleLevel, notes, index, location }) => (
     <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/finger-chart' component={FingeringChart} />
-        <Route path='/game' render={() => <Game handleClick={handleClick} handleSubmit={handleSubmit} props={location} />} />
+        <Route path='/game' render={() => <Game index={index} notes={notes} handleClick={handleClick} handleSubmit={handleSubmit} props={location} />} />
         <Route path='/levels' render={() => <Levels handleLevel={handleLevel} findNotes={findNotes} />} />
         <Route path='/next' component={Next} />
     </Switch>

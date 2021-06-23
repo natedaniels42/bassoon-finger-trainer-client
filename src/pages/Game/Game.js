@@ -121,7 +121,7 @@ class Game extends React.Component {
                 <h2>Score: <span>{score}</span></h2>
                 <h3>{message}</h3>
                 {this.state.notes && (
-                    <Note note={notes[notes.findIndex(note => note.name === fingerings[index].name)]} />
+                    <Note note={this.props.notes[this.props.index]} />
                 )}
                 <Fingering list={false} active={true} handleClick={this.props.handleClick} />
                 <Link to={{

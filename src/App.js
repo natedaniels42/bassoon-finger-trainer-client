@@ -113,12 +113,14 @@ class App extends React.Component {
         indexes.push(random);
       }
     }
-    console.log(indexes);
+    
     const retrievedNotes = sessionStorage.getItem('notes');
+    const retrievedFingerings = sessionStorage.getItem('fingerings');
     const notes = JSON.parse(retrievedNotes);
+    const fingerings = JSON.parse(retrievedFingerings);
     const foundNotes = indexes.map(num => notes[num]);
-
-    this.setState({notes: foundNotes});
+    const foundFingerings = foundNotes.map(note => fingerings.find(fingering => fingering.name === note.name));
+    this.setState({notes: foundNotes, fingerings: foundFingerings});
   }
 
   handleLevel = (event) => {
@@ -136,7 +138,7 @@ class App extends React.Component {
       <div className="App">
         <NavBar />   
         <main>
-          <Routes handleClick={this.handleClick} handleSubmit={this.handleSubmit} findNotes={this.findNotes} handleLevel={this.handleLevel} />
+          <Routes index={this.state.index} notes={this.state.notes} handleClick={this.handleClick} handleSubmit={this.handleSubmit} findNotes={this.findNotes} handleLevel={this.handleLevel} />
         </main>  
       </div>
     );
