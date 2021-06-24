@@ -20,7 +20,7 @@ class Game extends React.Component {
                 <h2>Question: <span>{this.props.index + 1}</span></h2>
                 <h2>Score: <span>{this.props.score}</span></h2>
                 {this.props.notes && (
-                    <Note note={this.props.notes[this.props.index]} />
+                    <Note note={this.props.notes[this.props.index]} randomIndex={this.props.randomIndex} />
                 )}
                 <Fingering list={false} active={true} handleClick={this.props.handleClick} />
                 <Link to="/next">

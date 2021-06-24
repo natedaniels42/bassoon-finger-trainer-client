@@ -16,7 +16,8 @@ class App extends React.Component {
     message: '',
     active: true,
     low: null,
-    high: null
+    high: null,
+    randomIndex: 0
   }
   
   componentDidMount() {
@@ -117,7 +118,8 @@ class App extends React.Component {
     const fingerings = JSON.parse(retrievedFingerings);
     const foundNotes = indexes.map(num => notes[num]);
     const foundFingerings = foundNotes.map(note => fingerings.find(fingering => fingering.name === note.name));
-    this.setState({notes: foundNotes, fingerings: foundFingerings});
+    const randomIndex = Math.floor(Math.random() * foundNotes[0].images.length);
+    this.setState({notes: foundNotes, fingerings: foundFingerings, randomIndex: randomIndex});
   }
 
   handleLevel = (event) => {
@@ -131,7 +133,8 @@ class App extends React.Component {
 
   handleNext = () => {
     let newIndex = this.state.index + 1;
-    this.setState({index: newIndex, message: '', guess: [], active: true});
+    const randomIndex = Math.floor(Math.random() * this.state.notes[newIndex].images.length)
+    this.setState({index: newIndex, message: '', guess: [], active: true, randomIndex: randomIndex});
     document.getElementById('next').style.visibility = 'hidden';
   }
 
@@ -161,6 +164,7 @@ class App extends React.Component {
         <NavBar />   
         <main>
           <Routes 
+            randomIndex={this.state.randomIndex}
             score={this.state.score} 
             index={this.state.index} 
             message={this.state.message}
