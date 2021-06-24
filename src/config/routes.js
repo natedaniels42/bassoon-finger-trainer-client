@@ -12,6 +12,6 @@ export default ({ handlePlayAgain, handleNext, handleClick, handleSubmit, findNo
         <Route path='/finger-chart' component={FingeringChart} />
         <Route path='/game' render={() => <Game index={index} score={score} notes={notes} handleClick={handleClick} handleSubmit={handleSubmit} props={location} randomIndex={randomIndex} />} />
         <Route path='/levels' render={() => <Levels handleLevel={handleLevel} findNotes={findNotes} />} />
-        <Route path='/next' render={() => <Next fingerings={fingerings} notes={notes} index={index} score={score} message={message} handleNext={handleNext} handlePlayAgain={handlePlayAgain}/> } />
+        <Route path='/next' render={() => <Next fingerings={fingerings} notes={notes} index={index} score={score} message={message} handleNext={handleNext} handlePlayAgain={handlePlayAgain} randomIndex={randomIndex} /> } />
     </Switch>
 )

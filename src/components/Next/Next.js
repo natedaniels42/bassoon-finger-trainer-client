@@ -10,7 +10,7 @@ class Next extends React.Component {
                 <h2>Question: <span>{this.props.index + 1}</span></h2>
                 <h2>Score: <span>{this.props.score}</span></h2>
                 <h3>{this.props.message}</h3>
-                <Note note={this.props.notes[this.props.index]}/>
+                <Note note={this.props.notes[this.props.index]} randomIndex={this.props.randomIndex} />
                 <Fingering fingering={this.props.fingerings[this.props.index]} color={this.props.message === 'correct' ? 'green' : 'red'} />
                 {this.props.index < 9 && (
                     <Link to='/game'>
