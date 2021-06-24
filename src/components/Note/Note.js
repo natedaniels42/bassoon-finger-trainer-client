@@ -18,11 +18,12 @@ class Note extends React.Component {
     }
     
     render() {
+        const imageIndex = this.props.randomIndex ? this.props.randomIndex : 0;
         return (
             <div className="note-container">
                 <div onClick={this.props.handleClick ? this.props.handleClick : null} >
                     {this.props.note && (
-                        <img src={this.props.note.images[0]} alt={this.props.note.name} />
+                        <img src={this.props.note.images[imageIndex]} alt={this.props.note.name} />
                     )}
                 </div>
                 <div>
