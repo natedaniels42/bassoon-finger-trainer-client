@@ -123,12 +123,12 @@ class App extends React.Component {
   }
 
   handleLevel = (event) => {
-    console.log('clicked');
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => button.style.border = '1px solid black');
     const numbers = event.target.id.split('-').map(Number);
     this.setState({low: numbers[0], high: numbers[1]});
-    event.target.style.border = '2px solid blue';
+    event.target.style.backgroundColor = 'lightblue';
+    event.target.style.color = 'black';
   }
 
   handleNext = () => {
@@ -170,6 +170,7 @@ class App extends React.Component {
             message={this.state.message}
             notes={this.state.notes} 
             fingerings={this.state.fingerings}
+            high={this.state.high}
             handleClick={this.handleClick} 
             handleSubmit={this.handleSubmit} 
             findNotes={this.findNotes} 

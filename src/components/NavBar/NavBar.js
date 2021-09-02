@@ -9,10 +9,7 @@ function NavBar() {
                 <NavLink className="nav-link" to="/finger-chart">Fingering Chart</NavLink>
             </div>
             <div className="nav-link-container">
-                <NavLink className="nav-link" to='/'>Game</NavLink>
-            </div>
-            <div className="nav-link-container">
-                <NavLink className="nav-link" to='/'>Exit Game</NavLink>
+                <NavLink className="nav-link" to='/'>New Game</NavLink>
             </div>
         </nav>
     )

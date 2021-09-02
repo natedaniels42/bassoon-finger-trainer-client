@@ -71,3 +71,8 @@ p {
   width: 100%;
   margin-top: 10px;
 }
+
+.fingering-chart {
+  display: flex;
+  justify-content: space-between;
+}

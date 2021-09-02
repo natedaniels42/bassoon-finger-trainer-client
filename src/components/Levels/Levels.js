@@ -23,9 +23,11 @@ class Levels extends React.Component {
                     <button id="7-26" onClick={this.props.handleLevel}>Mid</button>
                     <button id="26-38" onClick={this.props.handleLevel}>High</button>
                     <button id="31-43" onClick={this.props.handleLevel}>Extreme</button><hr/>
-                <Link to="/game">
-                    <button onClick={this.props.findNotes}>Go To Game</button>
-                </Link>
+                {this.props.high && (
+                    <Link to="/game">
+                        <button onClick={this.props.findNotes}>Go To Game</button>
+                    </Link>
+                )}
             </div>
         )
     }

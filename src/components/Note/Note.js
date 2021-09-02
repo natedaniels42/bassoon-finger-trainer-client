@@ -28,7 +28,7 @@ class Note extends React.Component {
                 </div>
                 <div>
                     {this.props.visible && (
-                        <Fingering fingering={this.state.fingering} key={this.state.fingering.name} color='purple' />
+                        <Fingering fingering={this.state.fingering} key={this.state.fingering.name} color='#BF72F5' />
                     )}
                 </div>
             </div>
