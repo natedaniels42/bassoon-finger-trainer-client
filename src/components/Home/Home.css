@@ -1,0 +1,22 @@
+#home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+#home h1, h2, a {
+    margin: 0 auto;
+}
+
+a {
+    height: 50px;
+}
+
+button {
+    width: 100%;
+}

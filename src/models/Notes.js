@@ -1,4 +1,4 @@
-const url = 'https://bassoon-finger-trainer-api.herokuapp.com/api/v1/notes';
+const url = 'http://localhost:4000/api/v1/notes';
 
 class NoteModel {
     static getAllNotes = () => {
