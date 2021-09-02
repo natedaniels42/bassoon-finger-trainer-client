@@ -9,7 +9,7 @@ function Home() {
             <h1>Key Masters</h1>
             <h2>For Bassoon</h2>
             <Link to="/levels">
-                <button>Play Game</button>
+                <button id="play-game">Play Game</button>
             </Link>
         </div>
     )

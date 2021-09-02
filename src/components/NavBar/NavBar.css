@@ -8,7 +8,11 @@ nav {
 }
 
 .nav-link {
-    color: white;
+    color: grey;
     text-decoration: none;
-    background-color: deepskyblue;
+}
+
+.nav-link:hover {
+    background-color: grey;
+    color: white;
 }

@@ -41,19 +41,19 @@ class App extends React.Component {
         if (key.id === 'key1') {
             key27 = 'key27';
             if (!guess.includes(key.id)) {
-                document.getElementById('key27').style.fill = 'purple';
+                document.getElementById('key27').style.fill = '#BF72F5';
             } else {
                 document.getElementById('key27').style.fill = 'white';
             }
         } 
         if (key.id === 'key27') {
             key1 = 'key1';
-            if (document.getElementById(key1).style.fill === 'purple') {
+            if (document.getElementById(key1).style.fill === '#BF72F5') {
                 document.getElementById(key1).style.fill = 'white';
             }
         }
         if (!guess.includes(key.id)) {
-            key.style.fill = 'purple';
+            key.style.fill = '#BF72F5';
             newGuess = guess.concat(key.id);
             newGuess.sort(); 
         } else {
@@ -99,7 +99,7 @@ class App extends React.Component {
   }
 
   findNotes = () => {
-    this.setState({notes: []});
+    this.setState({notes: [], active: true, guess: []});
     let low = this.state.low;
     let high = this.state.high;
     const indexes = [];
