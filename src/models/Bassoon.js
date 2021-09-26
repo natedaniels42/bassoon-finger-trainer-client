@@ -1,4 +1,4 @@
-const url = 'http://localhost:4000/api/v1/bassoon';
+const url = 'https://bassoon-finger-trainer-api.herokuapp.com/bassoon';
 
 class BassoonModel {
     static findAnswers = (bottom, top) => {
