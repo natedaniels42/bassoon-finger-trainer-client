@@ -1,4 +1,4 @@
-const url = 'https://bassoon-finger-trainer-api.herokuapp.com/fingerings';
+const url = 'https://bassoon-finger-trainer-api.herokuapp.com/api/v1/fingerings';
 
 class FingeringModel {
     static getAllFingerings = () => {
