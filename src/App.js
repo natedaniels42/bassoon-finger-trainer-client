@@ -124,7 +124,10 @@ class App extends React.Component {
 
   handleLevel = (event) => {
     const buttons = document.querySelectorAll('button');
-    buttons.forEach(button => button.style.border = '1px solid black');
+    buttons.forEach(button => {
+      button.style.border = '1px solid black'
+      button.style.backgroundColor = 'lightgray';
+    });
     const numbers = event.target.id.split('-').map(Number);
     this.setState({low: numbers[0], high: numbers[1]});
     event.target.style.backgroundColor = 'lightblue';
